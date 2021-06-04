@@ -6,3 +6,8 @@ main.bcf
 main.run.xml
 main.synctex.gz
 sources
+main.aux
+main.bbl
+main.blg
+main.log
+main.out

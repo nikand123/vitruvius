@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%ΥΠΟΣΤΗΡΙΞΗ ΒΙΒΛΙΟΓΡΑΦΙΚΩΝ ΑΝΑΦΟΡΩΝ
+% ΠΡΟΣΟΧΗ! η biblatex να φορτώνεται μετά το polyglossia (δες preamble-lang.tex)
+
+\usepackage{hyphenat}
+\usepackage[
+  style     = ieee, %style=verbose,
+  citestyle = numeric,
+  bibstyle  = numeric,
+  %autocite  = footnote,
+  backend   = biber,
+  sorting   = none,
+  backref   = true,
+]{biblatex}
+
+\DefineBibliographyStrings{greek}{%
+  backrefpage = {σελίδα},% originally "cited on page"
+  backrefpages = {σελίδες.},% originally "cited on pages"
+}
+
+% Μακροεντολή για την εκτύπωση τοπικής βιβλιογραφίας ανά κεφάλαιο. Χρησιμοποίησέ
+% το όνομα της μακροεντολής (subbibforchapter) σαν επιλογή στην τοπική εκτύπωση
+% βιβλιογραφίας π.χ. στο κεφάλαιο που θέλεις να εκτυπωθεί η τοπική βιβλιογραφία
+% γράψε \printbibliography[heading = subbibforchapter, ...]. Η τοπική βιβλιογραφία
+% θα εκτυπωθεί σαν ακόμη μία ενότητα του κεφαλαίου
+% Το βρήκα εδώ https://tex.stackexchange.com/questions/49941/multiple-bibliographies-and-one-global-bibliography-all-with-global-labels
+% [\refname\ \thechapter~Κεφαλαίου]
+
+\defbibheading{subbibforchapter}[\refname]{\section{#1}}
+% αν θέλεις μη αριθμημένη ενότητα χρησιμοποίησε ...{\section*{#1}}
+
+\addbibresource{./content/mainbiblio.bib}
+\addbibresource{./content/websources.bib}
+
+\renewcommand*{\bibfont}{\small}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
